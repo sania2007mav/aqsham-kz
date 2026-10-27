@@ -1,12 +1,10 @@
-
-body {
-  background:
-    radial-gradient(900px 500px at 12% -8%, rgba(255,228,0,.16), transparent 55%),
-    radial-gradient(700px 420px at 88% 5%, rgba(111,220,255,.12), transparent 50%),
-    linear-gradient(180deg, #12110f, #1a1814 45%, #10100e) !important;
-  color: #f3f0ea !important;
+/* V2 — tokens live on body.variant-v2 in glass.css.
+   This file only adds the darker rim so the sample stays distinct. */
+body.variant-v2 .news-slider,
+body.variant-v2 .nav__list,
+body.variant-v2 .tab-bar,
+body.variant-v2 .footer-copyright {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 20px 50px rgba(0, 0, 0, 0.35) !important;
 }
-:root { --glass-bg: rgba(255,255,255,.08); --glass-line: rgba(255,255,255,.14); }
-.news-slide__title, .section-title, h1, h2, h3 { color: #fff !important; }
-.news-slide__desc, p, .footer-main { color: #cfc8bc !important; }
-.brand-card { background: rgba(255,255,255,.1) !important; }
