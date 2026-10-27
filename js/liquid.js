@@ -1,109 +1,17 @@
-/* Liquid glass motion: scroll reveal, shrinking header, card light, counters.
-   Content and numbers stay the same — only how they appear changes. */
+/* UI behaviour only. Nothing here hides content.
+   Sections stay visible with or without this script. */
 (() => {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-  const root = document.documentElement;
-
-  const revealNodes = [
-    ...document.querySelectorAll(
-      '.hero-sliders, .cats__title, .cats__card, .brands, .project-card, .home-news, .news-card, .footer-cta, .footer-main, .footer-copyright'
-    ),
-  ];
-
-  revealNodes.forEach((el, i) => {
-    el.classList.add('liq-reveal');
-    el.style.setProperty('--d', `${(i % 8) * 50}ms`);
-  });
-
-  const show = (el) => el.classList.add('is-in');
-
-  if (reduce || !('IntersectionObserver' in window)) {
-    revealNodes.forEach(show);
-  } else {
-    root.classList.add('liq-js');
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          show(entry.target);
-          countInside(entry.target);
-          io.unobserve(entry.target);
-        });
-      },
-      { threshold: 0.01, rootMargin: '0px 0px 40px 0px' }
-    );
-    revealNodes.forEach((el) => io.observe(el));
-  }
 
   const header = document.querySelector('.header');
   const mobileTop = document.querySelector('.mobile-top');
   const onScroll = () => {
-    const shrunk = window.scrollY > 18;
+    const shrunk = window.scrollY > 24;
     header?.classList.toggle('is-shrunk', shrunk);
     mobileTop?.classList.toggle('is-shrunk', shrunk);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
-
-  if (!reduce && fine) {
-    const cards = document.querySelectorAll('.cats__card, .project-card, .news-card, .brand-card');
-    cards.forEach((card) => {
-      card.addEventListener('mousemove', (event) => {
-        const rect = card.getBoundingClientRect();
-        const x = (event.clientX - rect.left) / rect.width;
-        const y = (event.clientY - rect.top) / rect.height;
-        card.style.setProperty('--mx', `${(x * 100).toFixed(1)}%`);
-        card.style.setProperty('--my', `${(y * 100).toFixed(1)}%`);
-        const rx = (0.5 - y) * 7;
-        const ry = (x - 0.5) * 8;
-        card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-3px)`;
-      });
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-      });
-    });
-  }
-
-  function formatCount(value, pad, money) {
-    const rounded = Math.round(value);
-    if (money) {
-      return rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ₸';
-    }
-    return pad ? String(rounded).padStart(pad, '0') : String(rounded);
-  }
-
-  function runCount(el) {
-    if (el.dataset.liqCounted) return;
-    const raw = el.textContent.trim();
-    const digits = raw.replace(/[^\d]/g, '');
-    if (!digits) return;
-    const target = Number(digits);
-    if (!Number.isFinite(target)) return;
-    el.dataset.liqCounted = '1';
-    const money = raw.includes('₸');
-    const pad = !money && digits.length <= 2 ? digits.length : 0;
-    if (reduce) {
-      el.textContent = formatCount(target, pad, money);
-      return;
-    }
-    const start = performance.now();
-    const duration = 900;
-    const tick = (now) => {
-      const t = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - t, 3);
-      el.textContent = formatCount(target * eased, pad, money);
-      if (t < 1) requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
-  }
-
-  function countInside(scope) {
-    scope.querySelectorAll('.cats__num, .news-slide__price').forEach(runCount);
-    if (scope.matches('.cats__num, .news-slide__price')) runCount(scope);
-  }
-
-  document.querySelectorAll('.news-slide.is-active .news-slide__price').forEach(runCount);
 
   const burger = document.querySelector('.js-burger');
   const openBurger = () => {
@@ -195,16 +103,14 @@
     form.addEventListener('submit', (event) => {
       event.preventDefault();
       const button = form.querySelector('button[type="submit"], button:not([type])');
-      if (!button || button.dataset.liqDone) return;
+      if (!button || !form.classList.contains('js-request-form') || button.dataset.liqDone) return;
       const previous = button.textContent;
-      if (form.classList.contains('js-request-form')) {
-        button.dataset.liqDone = '1';
-        button.textContent = 'Заявка отправлена';
-        setTimeout(() => {
-          button.textContent = previous;
-          delete button.dataset.liqDone;
-        }, 1600);
-      }
+      button.dataset.liqDone = '1';
+      button.textContent = 'Заявка отправлена';
+      setTimeout(() => {
+        button.textContent = previous;
+        delete button.dataset.liqDone;
+      }, 1600);
     });
   });
 })();
