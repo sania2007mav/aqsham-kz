@@ -1,0 +1,32 @@
+/* Хлебные крошки (Figma 1:22743) */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  padding: 32px 0 24px;
+  font-weight: var(--fw-medium);
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: var(--ls-base);
+  color: var(--text-blue-dark);
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.breadcrumbs a:hover {
+  color: var(--text-dark-900);
+}
+
+.breadcrumbs__sep {
+  font-size: 14px;
+  color: var(--text-blue-dark);
+}
+
+@media (max-width: 767px) {
+  .breadcrumbs {
+    gap: 10px;
+    padding: 16px 0;
+    font-size: 12px;
+  }
+}

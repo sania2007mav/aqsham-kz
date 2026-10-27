@@ -1,0 +1,56 @@
+/* Появление блоков при загрузке: ступеньками сверху вниз, на всех страницах.
+
+   Работает в два шага, чтобы не было «вспышки» готовой страницы:
+   1) класс .aq-anim на <html> (ставит инлайн-скрипт в <head> до отрисовки)
+      прячет каркас страницы целиком — шапку, контент, подвал;
+   2) JS помечает блоки классом .aq-reveal-item, затем открывает каркас
+      (.aq-shell-on) и показывает блоки по очереди классом .is-visible.
+
+   Без JS класса .aq-anim нет — страница видна сразу. */
+
+.aq-anim :where(.header, .mobile-top, .header-mobile, .tab-bar, .page__main, .footer) {
+  opacity: 0;
+}
+
+/* Каркас открыт — дальше показом управляют сами блоки */
+.aq-anim.aq-shell-on :where(.header, .mobile-top, .header-mobile, .tab-bar, .page__main, .footer) {
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+/* Блок до появления — БЕЗ перехода: начальное состояние должно
+   примениться мгновенно, иначе блок «плавно прячется» и анимации не видно */
+.aq-anim .aq-reveal-item {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+/* Переход включается отдельно — анимируется только появление */
+.aq-anim .aq-reveal-item.is-armed {
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 0.61, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+  transition-delay: var(--aq-reveal-delay, 0ms);
+}
+
+/* Шапка и таб-бар: только проявление, без сдвига —
+   иначе ломается их sticky/fixed-позиционирование */
+.aq-anim .aq-reveal-item:where(.header, .mobile-top, .header-mobile, .tab-bar) {
+  transform: none;
+}
+
+/* Блок показан */
+.aq-anim .aq-reveal-item.is-visible.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Пользователь просил меньше движения — показываем без анимации */
+@media (prefers-reduced-motion: reduce) {
+  .aq-anim :where(.header, .mobile-top, .header-mobile, .tab-bar, .page__main, .footer),
+  .aq-anim .aq-reveal-item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

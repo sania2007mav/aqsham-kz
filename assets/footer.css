@@ -1,0 +1,445 @@
+/* Footer (Figma 1:12976 подвал) */
+
+/* Жёлтый CTA-баннер */
+.footer-cta {
+  background: var(--yellow-500);
+}
+
+.footer-cta__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  max-width: 1440px;
+  height: 110px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.footer-cta__watermark {
+  width: 60px;
+  height: 60px;
+  flex-shrink: 0;
+}
+
+.footer-cta__title {
+  margin-left: 10px;
+  font-weight: var(--fw-medium);
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: var(--ls-base);
+  color: var(--text-brown-dark);
+  white-space: nowrap;
+}
+
+.footer-cta__form {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+  flex: 0 1 785px;
+  justify-content: flex-end;
+}
+
+.footer-cta__input {
+  /* между 1024 и 1440 места меньше — поля ужимаются, а не выталкивают форму за экран */
+  flex: 0 1 270px;
+  width: 270px;
+  min-width: 0;
+  height: 54px;
+  padding: 0 25px;
+  border: 1px solid var(--border-200);
+  border-radius: 90px;
+  background: var(--bg-white);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  font-size: 15px;
+  outline: none;
+}
+
+.footer-cta__input::placeholder {
+  color: var(--text-gray-300);
+}
+
+.footer-cta__btn {
+  height: 54px;
+  padding: 16px 32px;
+  border-radius: 90px;
+  background: var(--dark-navy);
+  font-weight: var(--fw-bold);
+  font-size: 16px;
+  color: var(--bg-white);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.footer-cta__btn:hover {
+  background: #26263f;
+}
+
+/* Основной блок футера */
+.footer-main {
+  background: var(--bg-white);
+}
+
+.footer-main__inner {
+  display: grid;
+  grid-template-columns: 300px 1fr 1fr 308px;
+  gap: 50px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 20px 30px;
+}
+
+.footer-main__logo img {
+  /* тот же размер, что в шапке (Figma 240×53) */
+  display: block;
+  width: 240px;
+  height: 53px;
+  object-fit: contain;
+  object-position: left center;
+}
+
+.footer-main__desc {
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: var(--ls-base);
+  color: var(--text-gray-400);
+}
+
+.footer-main__social {
+  display: flex;
+  gap: 20px;
+  margin-top: 26px;
+}
+
+.footer-main__heading {
+  font-weight: var(--fw-bold);
+  font-size: 20px;
+  line-height: 1;
+  text-transform: capitalize;
+  color: var(--text-brown-dark);
+  padding-top: 10px;
+}
+
+.footer-main__list {
+  margin-top: 24px;
+}
+
+.footer-main__list a {
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: var(--ls-base);
+  color: var(--text-gray-400);
+}
+
+/* Пункты, существующие только в мобильном макете (Figma 1:6495).
+   Селекторы с родителем — чтобы перебить li-правила списков */
+.footer-main__list .footer-main__item--mobile,
+.footer-main__contacts .footer-main__item--mobile {
+  display: none;
+}
+
+.footer-main__list a:hover {
+  color: var(--text-dark-900);
+}
+
+.footer-main__contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.footer-main__contacts li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: var(--ls-base);
+  color: var(--text-gray-600);
+  min-width: 0;
+}
+
+.footer-main__contacts a,
+.footer-main__contacts span {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.footer-main__contacts img {
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+
+.footer-main__contacts a:hover {
+  color: var(--text-dark-900);
+}
+
+.footer-main__map {
+  width: 308px;
+  height: 258px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Копирайт */
+.footer-copyright {
+  background: var(--text-brown-dark);
+}
+
+.footer-copyright__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 15px 30px;
+}
+
+.footer-copyright p {
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--bg-white);
+}
+
+/* Лого + соцсети в копирайте — только mobile (Figma 1:10667) */
+.footer-copyright__brand {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-copyright__social {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-copyright__social img {
+  filter: invert(1);
+}
+
+/* --- Адаптив (Figma 1:10641 подвал mobile) --- */
+/* 1280–1365: контейнер уже 1440 — поля заявки ужимаются, чтобы форма не вылезала */
+@media (min-width: 1280px) and (max-width: 1365px) {
+  .footer-cta__form {
+    flex-wrap: wrap;
+    flex-basis: auto;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  .footer-cta__input {
+    flex: 1 1 180px;
+    width: auto;
+    max-width: 270px;
+    min-width: 0;
+  }
+}
+
+@media (max-width: 1279px) {
+  .footer-main__inner {
+    grid-template-columns: minmax(0, 300px) minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 308px);
+    gap: 24px;
+  }
+
+  .footer-main__col {
+    min-width: 0;
+  }
+
+  .footer-main__logo img {
+    width: 240px;
+    max-width: 100%;
+    height: 53px;
+  }
+
+  .footer-main__map {
+    width: 100%;
+    height: auto;
+  }
+
+  .footer-cta__inner {
+    height: auto;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-cta__form {
+    flex-wrap: wrap;
+    flex-basis: auto;
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .footer-cta__input {
+    width: 100%;
+    max-width: 270px;
+    min-width: 0;
+    flex: 1 1 200px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer-main__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .footer-main__col--map {
+    grid-column: 1 / -1;
+  }
+
+  .footer-main__map {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  /* CTA mobile (Figma 1:6486): px20 py48, заголовок Bold 18, инпуты p12 r30, кнопка h55 r27 */
+  .footer-cta__inner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 48px 20px 48px;
+    gap: 0;
+  }
+
+  .footer-cta__watermark {
+    display: none;
+  }
+
+  .footer-cta__title {
+    margin-left: 0;
+    font-weight: var(--fw-bold);
+    font-size: 18px;
+    white-space: normal;
+  }
+
+  .footer-cta__form {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-left: 0;
+    margin-top: 16px;
+    flex-basis: auto;
+  }
+
+  .footer-cta__input {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    padding: 12px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: none;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  .footer-cta__input::placeholder {
+    color: #9ca3af;
+  }
+
+  .footer-cta__btn {
+    width: 100%;
+    height: 55px;
+    padding: 16px;
+    border-radius: 27px;
+    font-size: 15px;
+  }
+
+  .footer-main__inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 48px 20px 20px;
+  }
+
+  .footer-main__col--about {
+    display: none;
+  }
+
+  .footer-main__col--map {
+    display: none;
+  }
+
+  .footer-main__heading {
+    font-size: 18px;
+    padding-top: 0;
+  }
+
+  /* Мобильный макет (1:6495/1:6502): полная навигация 5 пунктов,
+     «Показать на карте», текст 13px #717182, gap 12 */
+  .footer-main__list .footer-main__item--mobile,
+  .footer-main__contacts .footer-main__item--mobile {
+    display: flex;
+  }
+
+  .footer-main__list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .footer-main__list a {
+    font-size: 13px;
+    line-height: normal;
+    color: var(--text-gray-blue);
+  }
+
+  .footer-main__contacts {
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .footer-main__contacts li {
+    font-size: 13px;
+    line-height: normal;
+    color: var(--text-gray-blue);
+  }
+
+  .footer-main__contacts img {
+    display: none;
+  }
+
+  .footer-main__map-link img {
+    display: block;
+    margin-top: 0;
+  }
+
+  .footer-main__map-link a {
+    color: var(--text-dark-800);
+  }
+
+  .footer-copyright__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .footer-copyright__brand {
+    display: flex;
+  }
+
+  .footer-copyright p {
+    font-size: 11px;
+  }
+}
+
+/* Карта Leaflet в подвале (div вместо img) */
+.footer-main__map.js-aqsham-map {
+  height: 258px;
+  border-radius: 0;
+  z-index: 0;
+}
+
+@media (max-width: 1023px) {
+  .footer-main__map.js-aqsham-map {
+    width: 100%;
+    height: 258px;
+  }
+}

@@ -1,0 +1,984 @@
+/* Модалки и тосты (Figma 1:23915, 1:23810, 1:23898, 1:24043, 1:23986) */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal[hidden],
+.toast[hidden] {
+  display: none;
+}
+
+.modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.modal__window {
+  position: relative;
+  z-index: 1;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+}
+
+.modal__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  flex-shrink: 0;
+}
+
+.modal__close--grey {
+  background: #f4f4f5;
+}
+
+.modal__line {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: none;
+  background: var(--border-200);
+}
+
+/* --- Товар добавлен в корзину (1:23915) --- */
+.modal-added {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 560px;
+  padding: 28px;
+  border-radius: 12px;
+  background: var(--bg-white);
+  filter: drop-shadow(0 12px 12px rgba(0, 0, 0, 0.06));
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-added__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-added__head-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-added__check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  background: #10b981;
+}
+
+.modal-added__title {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-dark-900);
+}
+
+/* Заголовок: на mobile другой текст (1:23951 «Добавлено в корзину») */
+.modal-added__title-text--mobile {
+  display: none;
+}
+
+.modal-added__product {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.modal-added__thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  border: 1px solid var(--border-200);
+  border-radius: 6px;
+  background: #f5f5f5;
+}
+
+.modal-added__thumb img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.modal-added__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.modal-added__name {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--text-dark-900);
+}
+
+.modal-added__meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: #888888;
+}
+
+.modal-added__meta b {
+  font-weight: 600;
+  color: var(--text-dark-900);
+}
+
+/* Мобильная строка «1 x 2 069 ₸» (1:23951), на desktop скрыта */
+.modal-added__line {
+  display: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--text-dark-900);
+}
+
+/* Мобильные варианты подписей в блоке итогов */
+.modal-added__count-label--mobile,
+.modal-added__total-label--mobile {
+  display: none;
+}
+
+.modal-added__dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--border-400);
+}
+
+.modal-added__price {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-dark-900);
+}
+
+.modal-added__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.modal-added__count {
+  font-size: 14px;
+  color: #888888;
+}
+
+.modal-added__count b {
+  font-weight: 600;
+  color: var(--text-dark-900);
+}
+
+.modal-added__total-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  color: #888888;
+}
+
+.modal-added__total {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--text-dark-900);
+}
+
+.modal-added__actions {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-added__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  height: 44px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-dark-900);
+}
+
+.modal-added__btn--outline {
+  border: 1px solid var(--text-dark-900);
+  background: var(--bg-white);
+}
+
+.modal-added__btn--primary {
+  background: #ffd600;
+}
+
+/* --- Заказ в 1 клик (1:23810) --- */
+.modal-oneclick {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 480px;
+  padding: 32px;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  background: var(--bg-white);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.08));
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-oneclick__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-oneclick__title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #111111;
+}
+
+.modal-oneclick__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal-oneclick__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.modal-oneclick__label {
+  font-weight: 500;
+  font-size: 13px;
+  color: #111111;
+}
+
+.modal-oneclick__req {
+  font-weight: 600;
+  color: #ef4444;
+}
+
+.modal-oneclick__input {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  background: var(--bg-white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #111111;
+  outline: none;
+}
+
+.modal-oneclick__input::placeholder {
+  color: #71717a;
+}
+
+.modal-oneclick__input--readonly {
+  background: #f4f4f5;
+  color: #71717a;
+}
+
+.modal-oneclick__input.is-error {
+  border-color: #ef4444;
+}
+
+.modal-oneclick__qty-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  background: var(--bg-white);
+  overflow: hidden;
+}
+
+.counter__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.counter__value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  height: 100%;
+  background: #fafafa;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111111;
+}
+
+.modal-oneclick__privacy {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #71717a;
+  cursor: pointer;
+}
+
+.modal-oneclick__checkbox {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: #ffd600;
+}
+
+.modal-oneclick__policy {
+  color: #111111;
+  text-decoration: underline;
+}
+
+.modal-oneclick__submit {
+  height: 48px;
+  border-radius: 8px;
+  background: #ffd600;
+  font-weight: 600;
+  font-size: 15px;
+  color: #111111;
+}
+
+.modal-oneclick__note {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #71717a;
+}
+
+/* --- Success (1:23898) --- */
+.modal-success {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 420px;
+  padding: 56px 28px 28px;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  background: var(--bg-white);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.08));
+  font-family: 'Inter', sans-serif;
+  text-align: center;
+}
+
+.modal-success__close {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+}
+
+.modal-success__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  background: #e6f4ea;
+}
+
+.modal-success__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.modal-success__title {
+  font-weight: 700;
+  font-size: 22px;
+  color: #111111;
+}
+
+.modal-success__line1 {
+  font-weight: 500;
+  font-size: 14px;
+  color: #111111;
+}
+
+.modal-success__line2 {
+  font-size: 13px;
+  color: #71717a;
+}
+
+.modal-success__btn {
+  width: 100%;
+  height: 44px;
+  border-radius: 8px;
+  background: #ffd600;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #111111;
+}
+
+/* --- QR popup (1:24043 / 1:24078) --- */
+.modal-qr {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 360px;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--bg-white);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.12));
+  font-family: 'Inter', sans-serif;
+}
+
+.modal-qr__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.modal-qr__head-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.modal-qr__title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #1a1a24;
+}
+
+.modal-qr__article {
+  font-size: 14px;
+  color: var(--text-gray-blue);
+}
+
+.modal-qr__article b {
+  font-weight: 600;
+  color: #1a1a24;
+}
+
+.modal-qr__wrap {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+.modal-qr__code {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 200px;
+  height: 200px;
+  padding: 16px;
+  border: 1px solid #e4e4eb;
+  border-radius: 8px;
+  background: var(--bg-white);
+}
+
+.modal-qr__eye {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 9px solid #1a1a24;
+  border-radius: 2px;
+}
+
+.modal-qr__eye i {
+  width: 20px;
+  height: 20px;
+  border-radius: 1px;
+  background: #1a1a24;
+}
+
+.modal-qr__eye--tl { position: absolute; top: 16px; left: 16px; }
+.modal-qr__eye--tr { position: absolute; top: 16px; right: 16px; }
+.modal-qr__eye--bl { position: absolute; bottom: 16px; left: 16px; }
+
+.modal-qr__bits {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modal-qr__bits i {
+  display: block;
+  border-radius: 1px;
+  background: #1a1a24;
+}
+
+.modal-qr__bits--mid-left { left: 16px; top: 88px; align-items: flex-start; }
+.modal-qr__bits--mid-right { right: 16px; top: 84px; align-items: flex-end; }
+.modal-qr__bits--br { right: 16px; bottom: 16px; align-items: flex-end; }
+
+.modal-qr__print {
+  height: 46px;
+  border-radius: 8px;
+  background: #ffd600;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: #1a1a24;
+}
+
+.modal-qr__save {
+  text-align: center;
+}
+
+.modal-qr__save a {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-gray-blue);
+  text-decoration: underline;
+}
+
+/* --- Toast (1:23986) --- */
+.toast {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 400;
+  width: 320px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--bg-white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+.toast__main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 12px 16px;
+}
+
+.toast__check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  background: #10b981;
+}
+
+.toast__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.toast__title {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--text-dark-900);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.toast__sub {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.toast__close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.toast__timer {
+  height: 4px;
+  background: #f3f4f6;
+}
+
+.toast__progress {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #ffd600;
+  transform-origin: left;
+}
+
+.toast.is-running .toast__progress {
+  animation: toast-progress 4s linear forwards;
+}
+
+@keyframes toast-progress {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0); }
+}
+
+/* Подсветка ошибок чекбокса согласия */
+.modal-oneclick__privacy.is-error {
+  color: #ef4444;
+}
+
+.modal-oneclick__privacy.is-error .modal-oneclick__checkbox {
+  outline: 1.5px solid #ef4444;
+  outline-offset: 1px;
+  border-radius: 4px;
+}
+
+/* --- Мобильные размеры (1:23854, 1:23951, 1:24078) --- */
+@media (max-width: 767px) {
+  /* Товар добавлен mobile (1:23951): p20, gap 16, заголовок «Добавлено в корзину»,
+     строка «1 x цена», итоги двумя строками, кнопки столбиком (жёлтая сверху) */
+  .modal-added {
+    width: 358px;
+    max-width: 100%;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .modal-added__title {
+    font-size: 16px;
+  }
+
+  .modal-added__title-text--desktop {
+    display: none;
+  }
+
+  .modal-added__title-text--mobile {
+    display: inline;
+  }
+
+  .modal-added__check {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+  }
+
+  .modal-added__check img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .modal-added__head .modal__close {
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+  }
+
+  .modal-added__product {
+    gap: 12px;
+  }
+
+  .modal-added__thumb {
+    width: 56px;
+    height: 56px;
+  }
+
+  .modal-added__thumb img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal-added__name {
+    font-size: 13px;
+    line-height: 17px;
+  }
+
+  .modal-added__meta {
+    display: none;
+  }
+
+  .modal-added__line {
+    display: block;
+  }
+
+  .modal-added__summary {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 6px;
+  }
+
+  .modal-added__count,
+  .modal-added__total-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: 12px;
+  }
+
+  .modal-added__count b {
+    font-size: 12px;
+  }
+
+  .modal-added__count-label--desktop,
+  .modal-added__total-label--desktop {
+    display: none;
+  }
+
+  .modal-added__count-label--mobile,
+  .modal-added__total-label--mobile {
+    display: inline;
+  }
+
+  .modal-added__total {
+    font-size: 18px;
+  }
+
+  /* Заказ в 1 клик mobile (1:23854): p20, gap 16/12, close 28, note 10 */
+  .modal-oneclick {
+    width: 358px;
+    max-width: 100%;
+    padding: 20px;
+    gap: 16px;
+  }
+
+  .modal-oneclick__title {
+    font-size: 18px;
+  }
+
+  .modal-oneclick__head .modal__close {
+    width: 28px;
+    height: 28px;
+    border-radius: 14px;
+  }
+
+  .modal-oneclick__form {
+    gap: 12px;
+  }
+
+  .modal-oneclick__privacy {
+    font-size: 11px;
+    line-height: 1.3;
+  }
+
+  .modal-oneclick__submit {
+    height: 44px;
+    font-size: 14px;
+  }
+
+  .modal-oneclick__note {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+  /* QR mobile (1:24078): p20, gap 14, QR 180, title 15 */
+  .modal-qr {
+    width: 350px;
+    max-width: 100%;
+    padding: 20px;
+    gap: 14px;
+  }
+
+  .modal-qr__title {
+    font-size: 15px;
+  }
+
+  .modal-qr__article {
+    font-size: 13px;
+  }
+
+  .modal-qr__head-text {
+    gap: 6px;
+  }
+
+  .modal-qr__wrap {
+    padding: 4px 0;
+  }
+
+  .modal-qr__code {
+    width: 180px;
+    height: 180px;
+    padding: 14px;
+  }
+
+  .modal-qr__eye {
+    width: 40px;
+    height: 40px;
+    border-width: 8px;
+  }
+
+  .modal-qr__eye i {
+    width: 18px;
+    height: 18px;
+  }
+
+  .modal-qr__eye--tl { top: 14px; left: 14px; }
+  .modal-qr__eye--tr { top: 14px; right: 14px; }
+  .modal-qr__eye--bl { bottom: 14px; left: 14px; }
+
+  .modal-qr__bits--mid-left { left: 14px; top: 78px; }
+  .modal-qr__bits--mid-right { right: 14px; top: 74px; }
+  .modal-qr__bits--br { right: 14px; bottom: 14px; }
+
+  .modal-added__actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* В колонке flex-basis 0 схлопывает высоту — возвращаем 44px */
+  .modal-added__btn {
+    flex: 0 0 auto;
+    height: 44px;
+  }
+
+  /* Порядок кнопок на mobile: сначала жёлтая «Оформить заказ» (1:23951) */
+  .modal-added__btn--primary {
+    order: -1;
+  }
+
+  .toast {
+    left: 20px;
+    right: 20px;
+    width: auto;
+  }
+}
+
+/* Реальный QR-код (js/vendor/qrcode.js) внутри рамки макета */
+.modal-qr__code--real {
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-qr__code--real .modal-qr__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+/* --- Попап компании из блока «Реализованные проекты» --- */
+.modal-company {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 460px;
+  max-width: calc(100vw - 32px);
+  padding: 44px 32px 28px;
+  border: 1px solid #e4e4e7;
+  border-radius: 16px;
+  background: var(--bg-white);
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.12));
+  text-align: center;
+}
+
+.modal-company .modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+}
+
+.modal-company__title {
+  font-weight: var(--fw-bold);
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: var(--ls-base);
+  color: var(--text-dark-900);
+}
+
+.modal-company__text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-gray-blue, #5b6470);
+}
+
+.modal-company__btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 8px;
+  background: var(--yellow-500);
+  font-weight: var(--fw-bold);
+  font-size: 14px;
+  letter-spacing: var(--ls-base);
+  text-transform: uppercase;
+  color: var(--text-dark-900);
+  transition: filter 0.15s ease;
+}
+
+.modal-company__btn:hover {
+  filter: brightness(0.95);
+}
+
+/* Кликабельный логотип компании на карточке проекта */
+.project-card__logo--link {
+  cursor: pointer;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-card__logo--link:hover,
+.project-card__logo--link:focus-visible {
+  border-color: var(--yellow-500);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+@media (max-width: 767px) {
+  .modal-company {
+    width: 100%;
+    padding: 32px 20px 20px;
+    gap: 16px;
+  }
+
+  .modal-company__title {
+    font-size: 18px;
+  }
+
+  .modal-company__text {
+    font-size: 14px;
+  }
+}

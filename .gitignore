@@ -1,0 +1,19 @@
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+venv/
+.idea/
+.vscode/
+
+# scraped originals / temp build artifacts
+_src.html
+tools/_body_extract.html
+tools/_asset_map.txt
+tools/_wipe.py
+*.tar.gz

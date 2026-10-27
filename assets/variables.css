@@ -1,0 +1,83 @@
+/* AQSHAM — дизайн-токены из Figma UI kit (node 1:18143) */
+:root {
+  /* Background */
+  --bg-white: #ffffff;
+  --bg-gray-50: #f9fafb;
+  --bg-gray-light: #f8f8f8;
+  --bg-gray-100: #f6f7f8;
+  --bg-gray-200: #f0f0f0;
+  --bg-warm-gray: #efecec;
+  --bg-gray-300: #eaeaea;
+  --bg-yellow-light: #fef7e6;
+  --bg-green-light: #dcfce7;
+  --bg-cream: #fffaf4;
+
+  /* Text */
+  --text-black: #000000;
+  --text-near-black: #0a0a0a;
+  --text-dark-900: #1a1a1a;
+  --text-dark-800: #1f2124;
+  --text-dark-700: #333333;
+  --text-blue-dark: #333e48;
+  --text-brown-dark: #3a362d;
+  --text-brown: #4f4b46;
+  --text-gray-600: #54595f;
+  --text-gray-500: #6c757d;
+  --text-gray-blue: #717182;
+  --text-gray-400: #7a7a7a;
+  --text-gray-350: #8c8c8c;
+  --text-gray-300: #999999;
+  --text-gray-200: #bfbfbf;
+
+  /* Primary (Yellow) */
+  --yellow-500: #ffe400;
+  --yellow-450: #f6e200;
+  --yellow-400: #fbcb30;
+  --gold: #f9c846;
+  --gold-dark: #eeca43;
+  --yellow-300: #fddd6b;
+  --yellow-350: #fbd24a;
+  --amber: #e8b800;
+  --dark-gold: #c88f00;
+  --bronze: #a07800;
+  --yellow-cc: #ffcc00;
+
+  /* Borders & Dividers */
+  --border-light: #e5e7eb;
+  --border-200: #e8e8e8;
+  --border-300: #e0e0e0;
+  --border-350: #dddddd;
+  --border-400: #d1d1d1;
+  --border-500: #c0c0c0;
+  /* Тёмная панель навигации в шапке (Figma aqsham-remake) */
+  --nav-dark: #3a362d;
+  --divider: #d9d9d9;
+
+  /* Accent & Status */
+  --green: #86cd91;
+  --success: #28bf61;
+  --green-dark: #008236;
+  --error: #dc3545;
+  --red-dark: #c73838;
+  --red-bright: #fb2c36;
+  --red: #fe0101;
+  --blue-light: #6fdcff;
+  --blue: #1a73e8;
+  --navy: #01017e;
+  --dark-navy: #1a1a2e;
+
+  /* Typography */
+  --font-main: 'Gotham Pro', Arial, sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-black: 900;
+  --ls-base: -0.14px;
+
+  /* Layout */
+  --container-width: 1180px;
+  --container-padding: 16px;
+
+  /* Radius */
+  --radius-22: 22px;
+}

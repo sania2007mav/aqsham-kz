@@ -1,0 +1,85 @@
+/* Нижняя мобильная навигация (Figma 1:10994) */
+
+.tab-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: none;
+  height: 60px;
+  background: var(--text-dark-900);
+  border-top: 1px solid #404040;
+}
+
+.tab-bar__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1 1 0;
+  padding-top: 8px;
+  gap: 4px;
+}
+
+.tab-bar__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.tab-bar__icon--active {
+  display: none;
+}
+
+.tab-bar__item.is-active .tab-bar__icon--default {
+  display: none;
+}
+
+.tab-bar__item.is-active .tab-bar__icon--active {
+  display: block;
+}
+
+.tab-bar__label {
+  font-size: 10px;
+  color: var(--text-gray-350);
+}
+
+.tab-bar__item.is-active .tab-bar__label {
+  font-weight: var(--fw-medium);
+  color: var(--yellow-500);
+}
+
+/* Иконка «Каталог» — 4 квадрата (в Figma нарисованы рамками) */
+.tab-bar__quads {
+  display: grid;
+  grid-template-columns: 7px 7px;
+  grid-template-rows: 7px 7px;
+  gap: 3px;
+  width: 24px;
+  height: 24px;
+  padding: 4px 3.5px;
+  box-sizing: border-box;
+}
+
+.tab-bar__quads i {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border: 2px solid var(--text-gray-350);
+  border-radius: 2.5px;
+}
+
+.tab-bar__item.is-active .tab-bar__quads i {
+  border-color: var(--yellow-500);
+}
+
+@media (max-width: 1023px) {
+  .tab-bar {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 60px;
+  }
+}

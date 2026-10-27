@@ -1,0 +1,224 @@
+/* Новости (Figma 1:20422 desktop, 1:20614 mobile) */
+
+.news__title {
+  font-weight: var(--fw-bold);
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: var(--ls-base);
+  color: var(--text-black);
+}
+
+.news__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+  margin-bottom: 120px;
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  background: var(--bg-white);
+  filter: drop-shadow(0 6px 9px rgba(0, 0, 0, 0.05));
+}
+
+.news-card__date {
+  font-weight: var(--fw-bold);
+  font-size: 13px;
+  color: var(--text-gray-500);
+}
+
+.news-card__image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.news-card__title {
+  font-weight: var(--fw-bold);
+  font-size: 20px;
+  line-height: 26px;
+  color: var(--text-black);
+}
+
+.news-card__excerpt {
+  margin-top: -8px;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: var(--ls-base);
+  color: var(--text-gray-400, #6b7280);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+.news-card__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  margin-top: auto;
+  padding: 10px 25px;
+  border-radius: 90px;
+  background: var(--yellow-500);
+  font-weight: var(--fw-bold);
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--text-brown-dark);
+}
+
+.news-card__btn:hover {
+  background: var(--yellow-450);
+}
+
+/* ============================================================
+   Блок «Новости» на главной: горизонтальный слайдер,
+   стрелки-кружки у заголовка, дата — пилюлей поверх фото
+   ============================================================ */
+.home-news__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.home-news__arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.news__arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-light, #e5e7eb);
+  border-radius: 50%;
+  background: var(--bg-white);
+  font-size: 18px;
+  line-height: 1;
+  color: var(--text-black);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.news__arrow:hover {
+  background: var(--yellow-500);
+  border-color: var(--yellow-500);
+}
+
+.news__arrow:active {
+  transform: scale(0.92);
+}
+
+.home-news__track {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0 0;
+  padding: 6px; /* тени карточек не режутся */
+  list-style: none;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.home-news__track::-webkit-scrollbar {
+  display: none;
+}
+
+.home-news__track .news-card {
+  flex: 0 0 calc((100% - 80px) / 5);
+  padding: 0;
+  overflow: hidden;
+}
+
+.home-news__track .news-card__media {
+  position: relative;
+  display: block;
+}
+
+.home-news__track .news-card__date {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--bg-white);
+  font-size: 12px;
+}
+
+.home-news__track .news-card__image {
+  display: block;
+  height: 170px;
+  border-radius: 0;
+}
+
+.home-news__track .news-card__title {
+  margin: 4px 16px 0;
+  font-size: 17px;
+  line-height: 23px;
+}
+
+.home-news__track .news-card__excerpt {
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.home-news__track .news-card__btn {
+  align-self: flex-start;
+  height: 38px;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 10px 22px;
+}
+
+@media (max-width: 1023px) {
+  .news__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-news__track .news-card {
+    flex-basis: calc((100% - 40px) / 3);
+  }
+}
+
+@media (max-width: 767px) {
+  .news__title {
+    font-size: 28px;
+  }
+
+  /* Жёлтая полоса-underline под заголовком (Figma 1:20620) */
+  .news__title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin-top: 8px;
+    border-radius: 1px;
+    background: var(--yellow-500);
+  }
+
+  .news__grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 20px;
+    margin-bottom: 48px;
+  }
+
+  .news-card__image {
+    height: 200px;
+  }
+
+  .home-news__track .news-card {
+    flex-basis: 85%;
+  }
+}
