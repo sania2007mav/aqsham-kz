@@ -3,8 +3,10 @@
 from __future__ import annotations
 
 import base64
+import io
 import json
 import os
+import re
 import sys
 import tarfile
 import tempfile
@@ -80,7 +82,21 @@ def ensure_dns() -> None:
         print(f"DNS created: {DOMAIN} success={res.get('success')}")
 
 
+ASSET_LINK = re.compile(r'((?:href|src)="/(?:css|js)/[^"?]+)(?:\?v=[^"]*)?"')
+
+
+def add_html(tar: tarfile.TarFile, path: Path, arcname: str, stamp: str) -> None:
+    # Cloudflare caches /css and /js by URL, so every deploy needs a fresh ?v=
+    data = ASSET_LINK.sub(rf'\1?v={stamp}"', path.read_text(encoding="utf-8")).encode("utf-8")
+    info = tarfile.TarInfo(arcname)
+    info.size = len(data)
+    info.mtime = int(time.time())
+    info.mode = 0o644
+    tar.addfile(info, io.BytesIO(data))
+
+
 def make_tarball() -> Path:
+    stamp = time.strftime("%Y%m%d%H%M%S")
     tmp = tempfile.NamedTemporaryFile(suffix=".tar.gz", delete=False)
     tmp.close()
     with tarfile.open(tmp.name, "w:gz") as tar:
@@ -89,13 +105,31 @@ def make_tarball() -> Path:
             if not path.exists():
                 print(" WARN missing:", name)
                 continue
-            if name == "assets":
-                # skip bulky unused css dumps from plugins if any — include all visual assets
-                tar.add(path, arcname=name)
-            else:
-                tar.add(path, arcname=name)
+            files = [path] if path.is_file() else sorted(p for p in path.rglob("*") if p.is_file())
+            for f in files:
+                arc = f.relative_to(SITE_DIR).as_posix()
+                if f.suffix == ".html":
+                    add_html(tar, f, arc, stamp)
+                else:
+                    tar.add(f, arcname=arc)
             print(" +", name)
+    print(f"asset version: {stamp}")
     return Path(tmp.name)
+
+
+def purge_cf_cache() -> None:
+    res = cf_api(
+        "POST",
+        f"/zones/{ZONE_ID}/purge_cache",
+        {"prefixes": [f"{DOMAIN}/css/", f"{DOMAIN}/js/", f"{DOMAIN}/"]},
+    )
+    if not res.get("success"):
+        res = cf_api(
+            "POST",
+            f"/zones/{ZONE_ID}/purge_cache",
+            {"hosts": [DOMAIN]},
+        )
+    print(f"CF cache purge: success={res.get('success')}")
 
 
 def main() -> None:
@@ -185,6 +219,10 @@ curl -sk -H "Host: $DOMAIN" http://127.0.0.1/ | grep -oE '<title>[^<]*</title>' 
             ensure_dns()
         except Exception as ex:
             print("DNS note:", ex)
+        try:
+            purge_cf_cache()
+        except Exception as ex:
+            print("Purge note:", ex)
 
     print("\n=== Public check ===")
     for url in (
