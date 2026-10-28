@@ -391,8 +391,33 @@ body.aq-clone {
   box-shadow: 0 16px 32px rgba(28, 26, 22, 0.1) !important;
 }
 
+.cats__img { width: 100%; }
+
+.cats__icon {
+  width: 100% !important;
+  height: 104px !important;
+  border-radius: 14px !important;
+}
+
+.cats__icon svg {
+  width: 56px !important;
+  height: 56px !important;
+  stroke-width: 1.3;
+}
+
+.cats__pic {
+  display: block;
+  width: calc(100% - 28px);
+  height: 80px;
+  background: var(--yellow);
+  -webkit-mask: var(--ico) center / contain no-repeat;
+  mask: var(--ico) center / contain no-repeat;
+  transition: background 0.25s ease;
+}
+
 .cats__card:hover .cats__icon { background: var(--yellow) !important; }
 .cats__card:hover .cats__icon svg { stroke: var(--graphite) !important; }
+.cats__card:hover .cats__pic { background: var(--graphite); }
 
 .cats__card--all:hover { background: #fff4a3 !important; }
 .cats__card--all:hover .cats__label { color: var(--ink) !important; }
@@ -826,8 +851,9 @@ body.variant-v3 .cats__card--all .cats__label { color: var(--ink) !important; }
   .cats__grid { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
   .cats__card { min-height: 196px; }
   .cats__card--all { min-height: 76px !important; }
-  .cats__icon { width: 56px !important; height: 56px !important; }
-  .cats__icon svg { width: 28px !important; height: 28px !important; }
+  .cats__icon { width: 100% !important; height: 84px !important; }
+  .cats__icon svg { width: 44px !important; height: 44px !important; }
+  .cats__pic { width: calc(100% - 16px); height: 64px; }
   .cats__label { font-size: 13px !important; }
   .aq-actions { margin-left: auto; margin-right: auto; }
   .aq-actions__place { margin-right: 0; flex-basis: 100%; }
