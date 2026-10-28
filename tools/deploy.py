@@ -40,6 +40,7 @@ INCLUDE = (
     "js",
     "samples",
     "assets",
+    "1c",
 )
 
 

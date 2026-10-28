@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AQSHAM — варианты обмена 1С и сайта</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --graphite: #1e1c18;
+      --graphite-2: #2a2721;
+      --ink: #f6f2e8;
+      --muted: #b9b1a2;
+      --yellow: #ffe400;
+      --line: rgba(255, 255, 255, 0.1);
+      --green: #3ddc84;
+      --orange: #ffad33;
+      --red: #ff5c5c;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--graphite);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(800px 420px at 10% -10%, rgba(255, 228, 0, 0.14), transparent 60%),
+        radial-gradient(700px 400px at 95% 10%, rgba(255, 173, 51, 0.08), transparent 55%),
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 48px 48px,
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 48px 48px,
+        var(--graphite);
+    }
+
+    .wire {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+      background-size: 40% 100%;
+      background-repeat: no-repeat;
+      animation: current 2.8s linear infinite;
+      z-index: 5;
+    }
+    @keyframes current {
+      from { background-position: -40% 0; }
+      to { background-position: 140% 0; }
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 64px;
+    }
+
+    .brand {
+      font-family: Outfit, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+    .brand b { color: var(--yellow); }
+
+    h1 {
+      font-family: Outfit, sans-serif;
+      font-size: clamp(2rem, 1.3rem + 3vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin: 0 0 14px;
+      max-width: 18ch;
+    }
+    h1 span { color: var(--yellow); }
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 60ch;
+      margin: 0 0 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 26px 24px 24px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+      animation: rise .7s ease both;
+      overflow: hidden;
+    }
+    .card:nth-child(2) { animation-delay: .12s; }
+    .card:nth-child(3) { animation-delay: .24s; }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 228, 0, .5);
+      box-shadow: 0 28px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,228,0,.15);
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(400px 160px at 50% -20%, rgba(255,228,0,.12), transparent 70%);
+      opacity: 0;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card.best {
+      border-color: rgba(255, 228, 0, .55);
+      background: linear-gradient(180deg, rgba(255,228,0,.12), rgba(255,255,255,.03));
+    }
+
+    .num {
+      font-family: Outfit, sans-serif;
+      font-weight: 800;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 228, 0, .7);
+      margin-bottom: 14px;
+    }
+    .badge {
+      position: absolute;
+      top: 22px;
+      right: 20px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--yellow);
+      color: var(--graphite);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255,228,0,.45); }
+      50% { box-shadow: 0 0 0 8px rgba(255,228,0,0); }
+    }
+
+    .card h2 {
+      font-family: Outfit, sans-serif;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+    }
+    .what {
+      color: var(--muted);
+      margin: 0 0 18px;
+      font-size: .97rem;
+    }
+
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      font-weight: 700;
+      font-size: .85rem;
+    }
+    .node {
+      padding: 7px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid var(--line);
+    }
+    .arrow {
+      flex: 1;
+      height: 2px;
+      min-width: 28px;
+      background: linear-gradient(90deg, rgba(255,228,0,.2), var(--yellow), rgba(255,228,0,.2));
+      background-size: 200% 100%;
+      animation: flow 1.6s linear infinite;
+      position: relative;
+    }
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: -2px;
+      top: -4px;
+      border: 5px solid transparent;
+      border-left-color: var(--yellow);
+    }
+    .arrow.back { transform: scaleX(-1); }
+    @keyframes flow {
+      from { background-position: 200% 0; }
+      to { background-position: 0 0; }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: grid;
+      gap: 8px;
+      font-size: .93rem;
+    }
+    li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    li::before {
+      flex: 0 0 18px;
+      height: 18px;
+      margin-top: 2px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .7rem;
+      font-weight: 800;
+    }
+    li.plus::before { content: "+"; background: rgba(61,220,132,.18); color: var(--green); }
+    li.minus::before { content: "−"; background: rgba(255,92,92,.16); color: var(--red); }
+
+    .meter {
+      margin-top: auto;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .meter-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .meter-row b { color: var(--ink); }
+    .bar {
+      height: 8px;
+      border-radius: 99px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+    .bar i {
+      display: block;
+      height: 100%;
+      border-radius: 99px;
+      transform-origin: left;
+      animation: fill 1.2s .4s cubic-bezier(.2,.8,.2,1) both;
+    }
+    .bar.low i { width: 25%; background: var(--green); }
+    .bar.mid i { width: 65%; background: var(--orange); }
+    .bar.high i { width: 92%; background: var(--red); }
+    @keyframes fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    .section {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .panel {
+      padding: 26px 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      animation: rise .7s .35s ease both;
+    }
+    .panel h3 {
+      font-family: Outfit, sans-serif;
+      font-size: 1.25rem;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .opt {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.2);
+      border: 1px solid var(--line);
+    }
+    .opt h4 {
+      margin: 0 0 10px;
+      font-size: .95rem;
+    }
+    .opt.pick { border-color: rgba(255,228,0,.5); }
+    .opt.pick h4 { color: var(--yellow); }
+    .opt ul { margin: 0; font-size: .88rem; }
+    .note {
+      margin: 14px 0 0;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    .verdict {
+      background: linear-gradient(135deg, rgba(255,228,0,.95), #f6c800);
+      color: var(--graphite);
+      border: 0;
+    }
+    .verdict h3 { color: var(--graphite); }
+    .verdict p { margin: 0 0 10px; font-weight: 500; }
+    .verdict .step {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .verdict .step b {
+      flex: 0 0 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--graphite);
+      color: var(--yellow);
+      display: grid;
+      place-items: center;
+      font-family: Outfit, sans-serif;
+    }
+
+    .foot {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .grid, .section { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .two { grid-template-columns: 1fr; }
+      .wrap { padding-top: 40px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wire" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <p class="brand"><b>AQSHAM</b> Electric · 1С ↔ сайт</p>
+    <h1>Как связать <span>1С</span> и сайт: три варианта</h1>
+    <p class="lead">Выберите один вариант. Ниже кратко: что делает каждый, плюсы, минусы и сложность.</p>
+
+    <div class="grid">
+      <article class="card best">
+        <span class="badge">Рекомендуем</span>
+        <div class="num">01</div>
+        <h2>Только цены</h2>
+        <p class="what">1С находит товар на сайте по коду и обновляет цену. Всё остальное на сайте не меняется.</p>
+        <div class="flow"><span class="node">1С</span><span class="arrow"></span><span class="node">Сайт</span></div>
+        <ul>
+          <li class="plus">Быстро и недорого</li>
+          <li class="plus">Сайт уже готов к такому обмену</li>
+          <li class="plus">Фото, названия и разделы на сайте остаются как есть</li>
+          <li class="minus">Новые товары на сайт добавляются вручную</li>
+        </ul>
+        <div class="meter">
+          <div class="meter-row"><span>Сложность</span><b>Низкая</b></div>
+          <div class="bar low"><i></i></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="num">02</div>
+        <h2>Полная выгрузка товаров из 1С</h2>
+        <p class="what">1С становится главной: на сайт уходят новые товары, названия, разделы, картинки и цены.</p>
+        <div class="flow"><span class="node">1С</span><span class="arrow"></span><span class="node">Сайт</span></div>
+        <ul>
+          <li class="plus">Товар заводится один раз в 1С и сам появляется на сайте</li>
+          <li class="minus">Разделы каталога в 1С нужно привести к разделам сайта</li>
+          <li class="minus">Картинки нужно сначала загрузить в 1С (~11 000 товаров)</li>
+          <li class="minus">Названия на сайте заменятся названиями из 1С</li>
+        </ul>
+        <div class="meter">
+          <div class="meter-row"><span>Сложность</span><b>Средняя / высокая</b></div>
+          <div class="bar mid"><i></i></div>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="num">03</div>
+        <h2>Товары создаются на сайте → в 1С</h2>
+        <p class="what">Новые карточки заводятся на сайте и потом загружаются в 1С.</p>
+        <div class="flow"><span class="node">1С</span><span class="arrow back"></span><span class="node">Сайт</span></div>
+        <ul>
+          <li class="plus">Удобно заводить карточки с фото и описанием</li>
+          <li class="minus">Ваша 1С (УТ 2.2) так не умеет, нужна отдельная разработка</li>
+          <li class="minus">Риск дублей: один товар заведут и в 1С, и на сайте</li>
+          <li class="minus">Данные о товаре начинают расходиться</li>
+        </ul>
+        <div class="meter">
+          <div class="meter-row"><span>Сложность</span><b>Высокая</b></div>
+          <div class="bar high"><i></i></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="section">
+      <section class="panel">
+        <h3>Хранить ли картинки в 1С?</h3>
+        <div class="two">
+          <div class="opt">
+            <h4>Хранить в 1С</h4>
+            <ul>
+              <li class="plus">Всё о товаре в одном месте</li>
+              <li class="plus">Удобно выгружать на другие сайты и площадки</li>
+              <li class="minus">База вырастет на ~2–4 ГБ</li>
+              <li class="minus">Кто-то должен вести фото в 1С</li>
+            </ul>
+          </div>
+          <div class="opt pick">
+            <h4>Оставить на сайте ✓</h4>
+            <ul>
+              <li class="plus">1С остаётся лёгкой</li>
+              <li class="plus">Фото ведутся там, где удобно</li>
+              <li class="plus">Другим площадкам фото можно отдать ссылкой с сайта</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">Для Kaspi фото в 1С обычно не нужны: товар привязывается к готовой карточке Kaspi.</p>
+      </section>
+
+      <section class="panel verdict">
+        <h3>Что предлагаем</h3>
+        <div class="step"><b>1</b><span>Сейчас запускаем вариант 1: только цены. Быстро и без риска для сайта.</span></div>
+        <div class="step"><b>2</b><span>Картинки оставляем на сайте.</span></div>
+        <div class="step"><b>3</b><span>К варианту 2 вернёмся, когда понадобится заводить товары только в 1С.</span></div>
+        <p>Вариант 3 не рекомендуем.</p>
+      </section>
+    </div>
+
+    <p class="foot">Напишите номер варианта: 1, 2 или 3, и мы пришлём точную оценку.</p>
+  </main>
+</body>
+</html>
