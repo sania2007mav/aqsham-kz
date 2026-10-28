@@ -3,7 +3,7 @@
   const sw = document.querySelector('.js-cats-switch');
   if (!section || !sw) return;
 
-  const VIEWS = ['icons', 'photo', 'plain'];
+  const VIEWS = ['icons', 'photo', 'plain', 'promo'];
   const KEY = 'aq-cats-view';
   const fromUrl = new URLSearchParams(location.search).get('cats');
   let saved = null;

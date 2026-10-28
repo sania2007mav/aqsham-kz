@@ -40,11 +40,26 @@ SWITCH = (
     '<button type="button" data-cats-view="icons">Иконки</button>'
     '<button type="button" data-cats-view="photo">Фото в нашем стиле</button>'
     '<button type="button" data-cats-view="plain">Каталог</button>'
+    '<button type="button" data-cats-view="promo">С акцией</button>'
     "</div>"
 )
 
+PROMO_SRC = GENERATED / "promo-rcbo.jpg"
+PROMO_DST = ROOT / "assets" / "promo" / "rcbo.jpg"
+PROMO = """<a class="cats__promo" href="#product/avtomaticheskij-vyklyuchatel/">
+				<span class="cats__promo-badge">Акция</span>
+				<span class="cats__promo-title">Автоматический выключатель</span>
+				<span class="cats__promo-meta"><span>Код: <b>AQ-10325</b></span><span class="cats__promo-stock">В наличии</span></span>
+				<span class="cats__promo-rating" aria-label="Рейтинг 4 из 5">★★★★☆ <small>(5)</small></span>
+				<img class="cats__promo-img" src="/assets/promo/rcbo.jpg" alt="Автоматический выключатель" width="480" height="640" loading="lazy" decoding="async">
+				<span class="cats__promo-price"><small>Цена</small><s>12 500 ₸</s><b>10 200 ₸</b></span>
+				<span class="cats__promo-btn">К товару</span>
+			</a>"""
+
 PHOTO_RE = re.compile(r'\s*<img class="cats__photo"[^>]*>')
 SWITCH_RE = re.compile(r'<div class="cats__switch js-cats-switch".*?</div>', re.S)
+PROMO_RE = re.compile(r'\s*<a class="cats__promo".*?</a>', re.S)
+GRID_RE = re.compile(r'(<div class="cats__grid">)')
 ICON_SPAN_RE = re.compile(r'(<span class="cats__icon[^"]*" aria-hidden="true">.*?</span>)', re.S)
 LINE_RE = re.compile(r'(<div class="cats__line" aria-hidden="true"></div>)')
 
@@ -63,11 +78,21 @@ def build_photos() -> None:
         img.save(dst, "JPEG", quality=84, optimize=True, progressive=True)
         print(f"photo {dst.name}: {img.size}, {dst.stat().st_size // 1024} KB")
 
+    if PROMO_SRC.exists():
+        PROMO_DST.parent.mkdir(parents=True, exist_ok=True)
+        img = Image.open(PROMO_SRC).convert("RGB")
+        img.thumbnail((480, 640))
+        img.save(PROMO_DST, "JPEG", quality=84, optimize=True, progressive=True)
+        print(f"promo {PROMO_DST.name}: {img.size}, {PROMO_DST.stat().st_size // 1024} KB")
+    elif not PROMO_DST.exists():
+        raise SystemExit(f"missing generated photo: {PROMO_SRC}")
+
 
 def patch(path: Path) -> None:
     html = path.read_text(encoding="utf-8")
     html = PHOTO_RE.sub("", html)
     html = SWITCH_RE.sub("", html)
+    html = PROMO_RE.sub("", html)
 
     if len(ICON_SPAN_RE.findall(html)) != len(ORDER):
         print(f"SKIP {path.name}: icon count mismatch")
@@ -85,6 +110,7 @@ def patch(path: Path) -> None:
 
     html = ICON_SPAN_RE.sub(add_photo, html)
     html = LINE_RE.sub(lambda m: f"{m.group(1)}\n\n\t\t{SWITCH}", html, count=1)
+    html = GRID_RE.sub(lambda m: f"{m.group(1)}\n\n\t\t\t{PROMO}", html, count=1)
     if "/js/cats-view.js" not in html:
         html = html.replace("</body>", '  <script src="/js/cats-view.js"></script>\n</body>', 1)
     path.write_text(html, encoding="utf-8")
