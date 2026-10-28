@@ -220,6 +220,7 @@ def page(title: str, extra_css: str, body: str, variant: str) -> str:
         <a href="/">V1 копия+стекло</a>
         <a href="/samples/v2-dark.html">V2 dark glass</a>
         <a href="/samples/v3-aurora.html">V3 aurora glass</a>
+        <a href="/samples/v4-live.html">V4 live</a>
       </span>
     """
     return f"""<!DOCTYPE html>

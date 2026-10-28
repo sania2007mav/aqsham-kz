@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AQSHAM — V4 Live</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700;800&family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/v4.css" />
+</head>
+<body class="v4">
+  <a class="skip" href="#main">Перейти к содержимому</a>
+
+  <div class="demo-bar">
+    <span>AQSHAM, пустышка шаблона, не прод</span>
+    <nav aria-label="Версии дизайна">
+      <a href="/">V1 копия+стекло</a>
+      <a href="/samples/v2-dark.html">V2 dark glass</a>
+      <a href="/samples/v3-aurora.html">V3 aurora glass</a>
+      <a href="/samples/v4-live.html" aria-current="page">V4 live</a>
+    </nav>
+  </div>
+
+  <div class="promo-bar">
+    <p>До 31 октября дифавтоматы дешевле на 18%</p>
+    <a href="#catalog">Смотреть акцию</a>
+  </div>
+
+  <header class="top">
+    <div class="wrap top__in">
+      <a class="top__logo" href="#"><img src="/assets/logo-light.svg" alt="AQSHAM Electric" width="160" height="36" /></a>
+      <nav class="top__nav" aria-label="Основное меню">
+        <a href="#catalog">Каталог</a>
+        <a href="#how">Как заказать</a>
+        <a href="#buy">Опт и объекты</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <a class="top__phone" href="tel:+77132411989">+7 (7132) 41-19-89</a>
+      <a class="btn btn--yellow top__cta" href="#request">Получить расчёт</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="request" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <svg class="hero__arcs" viewBox="0 0 1440 520" preserveAspectRatio="none">
+          <ellipse cx="720" cy="560" rx="760" ry="250" />
+          <ellipse cx="720" cy="560" rx="620" ry="190" />
+          <ellipse cx="720" cy="560" rx="470" ry="130" />
+          <path d="M720 310 V520 M420 340 L250 520 M1020 340 L1190 520 M560 318 L470 520 M880 318 L970 520" />
+        </svg>
+      </div>
+
+      <div class="wrap hero__in">
+        <div class="hero__copy">
+          <h1 id="hero-title">Опишите объект.<br />Соберём комплект.</h1>
+          <p class="hero__lead">Электротехника оптом и в розницу в Актобе. Пишите своими словами, инженер подберёт позиции и аналоги и пришлёт счёт.</p>
+
+          <div class="modes" role="tablist" aria-label="Способ заявки">
+            <button type="button" role="tab" aria-selected="true" data-mode="task">Подбор по задаче</button>
+            <button type="button" role="tab" aria-selected="false" data-mode="sku">По артикулу</button>
+            <button type="button" role="tab" aria-selected="false" data-mode="panel">Расчёт щита</button>
+          </div>
+
+          <form class="prompt js-prompt" novalidate>
+            <label class="sr-only" for="prompt-text">Опишите, что нужно</label>
+            <textarea id="prompt-text" rows="3" placeholder="Например: частный дом 160 м², нужен щит, автоматы и кабель на всю разводку"></textarea>
+            <div class="prompt__bar">
+              <div class="prompt__chips js-chips"></div>
+              <button class="btn btn--yellow prompt__send" type="submit">Отправить заявку</button>
+            </div>
+          </form>
+          <p class="hero__note js-prompt-status" role="status" aria-live="polite">Ответим в течение 15 минут в рабочее время</p>
+        </div>
+
+        <div class="reel" aria-label="Товары и разделы каталога">
+          <div class="reel__col">
+            <div class="reel__track js-reel">
+              <a class="tile" href="#catalog"><span class="tile__img"><img src="/assets/promo/rcbo.jpg" alt="" width="480" height="640" loading="lazy" /></span><span class="tile__name">Дифавтомат 2P, 25 А</span><span class="tile__meta"><s>12 500 ₸</s> 10 200 ₸</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img"><img src="/assets/cat-photos/shchity.jpg" alt="" width="640" height="480" loading="lazy" /></span><span class="tile__name">Щиты и боксы</span><span class="tile__meta">Навесные и встраиваемые</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img tile__img--cut"><img src="/assets/image-removebg-preview-1.png" alt="" width="559" height="447" loading="lazy" /></span><span class="tile__name">Генератор ЭКСПЕРТ ГБР-6500</span><span class="tile__meta">303 335 ₸</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img"><img src="/assets/cat-photos/kabel.jpg" alt="" width="640" height="480" loading="lazy" /></span><span class="tile__name">Кабельная продукция</span><span class="tile__meta">Режем в нужный метраж</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img"><img src="/assets/cat-photos/svetotekhnika.jpg" alt="" width="640" height="480" loading="lazy" /></span><span class="tile__name">Светотехника</span><span class="tile__meta">Склады, улица, офисы</span><span class="tile__go">Открыть</span></a>
+            </div>
+          </div>
+          <div class="reel__col reel__col--down">
+            <div class="reel__track js-reel">
+              <a class="tile" href="#catalog"><span class="tile__img"><img src="/assets/cat-photos/modulnoe.jpg" alt="" width="640" height="480" loading="lazy" /></span><span class="tile__name">Модульное оборудование</span><span class="tile__meta">Автоматы, УЗО, реле</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img tile__img--cut"><img src="/assets/bez-nazvaniya.png" alt="" width="435" height="435" loading="lazy" /></span><span class="tile__name">Перфоратор ALTECO RH 1100</span><span class="tile__meta">57 211 ₸</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img"><img src="/assets/cat-photos/pribory.jpg" alt="" width="640" height="480" loading="lazy" /></span><span class="tile__name">Приборы учёта</span><span class="tile__meta">Счётчики и измерители</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img"><img src="/assets/cat-photos/prokladka.jpg" alt="" width="640" height="480" loading="lazy" /></span><span class="tile__name">Прокладка кабеля</span><span class="tile__meta">Лотки, гофра, каналы</span><span class="tile__go">Открыть</span></a>
+              <a class="tile" href="#catalog"><span class="tile__img tile__img--cut"><img src="/assets/bez-nazvaniya-2.png" alt="" width="579" height="435" loading="lazy" /></span><span class="tile__name">Компрессор AC-100PB</span><span class="tile__meta">359 318 ₸</span><span class="tile__go">Открыть</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="brands" aria-labelledby="brands-title">
+      <h2 class="brands__title" id="brands-title">Поставляем оборудование производителей, которым доверяют электрики</h2>
+      <div class="marquee">
+        <div class="marquee__track js-marquee">
+          <img src="/assets/brand-legrand.png" alt="Legrand" height="40" />
+          <img src="/assets/brand-keaz.png" alt="КЭАЗ" height="40" />
+          <img src="/assets/brand-nva.png" alt="NVA" height="40" />
+          <img src="/assets/brand-navigator.png" alt="Navigator" height="40" />
+          <img src="/assets/brand-sirius.png" alt="Sirius" height="40" />
+          <img src="/assets/brand-elektrokomplekt.png" alt="Электрокомплект" height="40" />
+          <img src="/assets/brand-expert-kabel.png" alt="Эксперт Кабель" height="40" />
+          <img src="/assets/brand-bylectrica.png" alt="Bylectrica" height="40" />
+          <img src="/assets/brand-lezard.png" alt="Lezard" height="40" />
+          <img src="/assets/brand-russkiy-svet.png" alt="Русский свет" height="40" />
+          <img src="/assets/brand-install.png" alt="Install" height="40" />
+        </div>
+      </div>
+    </section>
+
+    <section class="buy" id="buy" aria-labelledby="buy-title">
+      <div class="wrap">
+        <h2 class="h2 buy__title" id="buy-title">Один склад в Актобе.<br />Три способа купить.</h2>
+        <div class="buy__grid">
+          <article class="way">
+            <h3 class="way__kicker">Розница</h3>
+            <img class="way__img" src="/assets/cat-photos/ustanovochnye.jpg" alt="Розетки, выключатели и удлинители на витрине" width="640" height="480" loading="lazy" />
+            <p class="way__head">Приезжайте в магазин и заберите товар в тот же день.</p>
+            <p class="way__text">Улица Братьев Жубановых, 310 А. Продавец поможет подобрать автомат, кабель или светильник под вашу задачу.</p>
+            <div class="way__btns"><a class="btn btn--dark" href="#contacts">Как доехать</a><a class="btn btn--light" href="#catalog">Каталог</a></div>
+          </article>
+          <article class="way">
+            <h3 class="way__kicker">Опт для подрядчиков</h3>
+            <img class="way__img" src="/assets/project-3.png" alt="Бригада электромонтажников на строящемся объекте" width="687" height="328" loading="lazy" />
+            <p class="way__head">Цены для бригад и монтажных организаций.</p>
+            <p class="way__text">Счёт с НДС, закрывающие документы и резерв товара под ваш график работ на объекте.</p>
+            <div class="way__btns"><a class="btn btn--dark" href="#request">Запросить прайс</a><a class="btn btn--light" href="#faq">Условия</a></div>
+          </article>
+          <article class="way">
+            <h3 class="way__kicker">Комплектация объектов</h3>
+            <img class="way__img" src="/assets/project-1.png" alt="Электрическая подстанция в степи" width="687" height="328" loading="lazy" />
+            <p class="way__head">Поставки для энергетики, промышленности и гражданских объектов.</p>
+            <p class="way__text">Работали с Энергосистемой, Казхромом и застройщиками Актобе. Пришлите спецификацию, соберём поставку целиком.</p>
+            <div class="way__btns"><a class="btn btn--dark" href="#request">Отправить спецификацию</a><a class="btn btn--light" href="#how">Как работаем</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="how" id="how" aria-labelledby="how-title">
+      <div class="wrap">
+        <h2 class="h2" id="how-title">Как проходит заказ</h2>
+        <div class="steps js-steps">
+          <div class="steps__tabs" role="tablist" aria-label="Шаги заказа">
+            <button type="button" role="tab" id="st-1" aria-controls="sp-1" aria-selected="true"><span>1. Заявка</span><i aria-hidden="true"></i></button>
+            <button type="button" role="tab" id="st-2" aria-controls="sp-2" aria-selected="false"><span>2. Подбор</span><i aria-hidden="true"></i></button>
+            <button type="button" role="tab" id="st-3" aria-controls="sp-3" aria-selected="false"><span>3. Счёт и резерв</span><i aria-hidden="true"></i></button>
+            <button type="button" role="tab" id="st-4" aria-controls="sp-4" aria-selected="false"><span>4. Отгрузка</span><i aria-hidden="true"></i></button>
+          </div>
+          <div class="steps__panels">
+            <div class="step" role="tabpanel" id="sp-1" aria-labelledby="st-1">
+              <div class="step__text"><h3>Присылаете задачу в любом виде</h3><p>Спецификация в Excel, фото старого щита, список от руки или голосовое в WhatsApp. Нам хватит.</p></div>
+              <img src="/assets/project-2.png" alt="Инженеры разбирают проект за столом" width="687" height="328" loading="lazy" />
+            </div>
+            <div class="step" role="tabpanel" id="sp-2" aria-labelledby="st-2" hidden>
+              <div class="step__text"><h3>Инженер подбирает позиции и аналоги</h3><p>Если чего-то нет на складе, предложим замену с теми же характеристиками и объясним разницу в цене.</p></div>
+              <img src="/assets/cat-photos/modulnoe.jpg" alt="Модульные автоматы на DIN-рейке" width="640" height="480" loading="lazy" />
+            </div>
+            <div class="step" role="tabpanel" id="sp-3" aria-labelledby="st-3" hidden>
+              <div class="step__text"><h3>Счёт и резерв на складе</h3><p>Выставляем счёт для физлица или компании и держим товар под вас, пока идёт оплата.</p></div>
+              <img src="/assets/cat-photos/shchity.jpg" alt="Распределительный щит с автоматами" width="640" height="480" loading="lazy" />
+            </div>
+            <div class="step" role="tabpanel" id="sp-4" aria-labelledby="st-4" hidden>
+              <div class="step__text"><h3>Самовывоз или доставка на объект</h3><p>Заберите заказ на Братьев Жубановых или мы привезём его на объект по Актобе и области.</p></div>
+              <img src="/assets/project-3.png" alt="Монтажники на объекте" width="687" height="328" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog" id="catalog" aria-labelledby="catalog-title">
+      <div class="wrap">
+        <div class="catalog__head">
+          <h2 class="h2" id="catalog-title">Каталог</h2>
+          <div class="filters js-filters" role="group" aria-label="Фильтр разделов">
+            <button type="button" aria-pressed="true" data-f="all">Все</button>
+            <button type="button" aria-pressed="false" data-f="protect">Щиты и защита</button>
+            <button type="button" aria-pressed="false" data-f="cable">Кабель и монтаж</button>
+            <button type="button" aria-pressed="false" data-f="light">Свет</button>
+            <button type="button" aria-pressed="false" data-f="other">Учёт, двигатели, сантехника</button>
+          </div>
+        </div>
+        <div class="cards js-cards">
+          <a class="card" data-g="cable" href="#"><img src="/assets/cat-photos/montazhnye.jpg" alt="" width="640" height="480" loading="lazy" /><span>Электромонтажные изделия, инструменты и силовые разъёмы</span></a>
+          <a class="card" data-g="other" href="#"><img src="/assets/cat-photos/dvigateli.jpg" alt="" width="640" height="480" loading="lazy" /><span>Электродвигатели и отопительное оборудование</span></a>
+          <a class="card" data-g="protect" href="#"><img src="/assets/cat-photos/shchity.jpg" alt="" width="640" height="480" loading="lazy" /><span>Щиты, боксы и принадлежности</span></a>
+          <a class="card" data-g="cable" href="#"><img src="/assets/cat-photos/prokladka.jpg" alt="" width="640" height="480" loading="lazy" /><span>Системы для прокладки кабеля</span></a>
+          <a class="card" data-g="protect" href="#"><img src="/assets/cat-photos/silovoe.jpg" alt="" width="640" height="480" loading="lazy" /><span>Силовое оборудование защиты и коммутации</span></a>
+          <a class="card" data-g="light" href="#"><img src="/assets/cat-photos/svetotekhnika.jpg" alt="" width="640" height="480" loading="lazy" /><span>Светотехника</span></a>
+          <a class="card" data-g="other" href="#"><img src="/assets/cat-photos/santekhnika.jpg" alt="" width="640" height="480" loading="lazy" /><span>Сантехника</span></a>
+          <a class="card" data-g="other" href="#"><img src="/assets/cat-photos/radioelektronika.jpg" alt="" width="640" height="480" loading="lazy" /><span>Радиоэлектроника</span></a>
+          <a class="card" data-g="protect" href="#"><img src="/assets/cat-photos/modulnoe.jpg" alt="" width="640" height="480" loading="lazy" /><span>Модульное оборудование</span></a>
+          <a class="card" data-g="cable" href="#"><img src="/assets/cat-photos/kabel.jpg" alt="" width="640" height="480" loading="lazy" /><span>Кабельная продукция</span></a>
+          <a class="card" data-g="cable" href="#"><img src="/assets/cat-photos/ustanovochnye.jpg" alt="" width="640" height="480" loading="lazy" /><span>Установочные изделия</span></a>
+          <a class="card" data-g="other" href="#"><img src="/assets/cat-photos/pribory.jpg" alt="" width="640" height="480" loading="lazy" /><span>Приборы учёта</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="compare" aria-labelledby="compare-title">
+      <div class="wrap">
+        <h2 class="h2" id="compare-title">Чем мы отличаемся от маркетплейса и рынка</h2>
+        <p class="compare__hint">Таблицу можно листать вбок</p>
+        <div class="compare__scroll" tabindex="0" role="region" aria-labelledby="compare-title">
+          <table class="cmp">
+            <thead>
+              <tr><th scope="col">Что важно</th><th scope="col" class="cmp__us">AQSHAM</th><th scope="col">Маркетплейс</th><th scope="col">Строительный рынок</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Инженер подберёт аналог по спецификации</th><td class="cmp__us"><b class="yes">Да</b></td><td><b class="no">Нет</b></td><td><b class="part">Как повезёт</b></td></tr>
+              <tr><th scope="row">Счёт с НДС и закрывающие документы</th><td class="cmp__us"><b class="yes">Да</b></td><td><b class="part">Не всегда</b></td><td><b class="no">Нет</b></td></tr>
+              <tr><th scope="row">Забрать со склада в Актобе сегодня</th><td class="cmp__us"><b class="yes">Да</b></td><td><b class="no">Нет</b></td><td><b class="yes">Да</b></td></tr>
+              <tr><th scope="row">Сертификаты и паспорта на товар</th><td class="cmp__us"><b class="yes">Да</b></td><td><b class="part">Не всегда</b></td><td><b class="no">Нет</b></td></tr>
+              <tr><th scope="row">Резерв товара под график объекта</th><td class="cmp__us"><b class="yes">Да</b></td><td><b class="no">Нет</b></td><td><b class="no">Нет</b></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq__in">
+        <h2 class="h2" id="faq-title">Частые вопросы</h2>
+        <div class="faq__list">
+          <details open><summary>Работаете с юридическими лицами?</summary><p>Да. Выставляем счёт с НДС, отгружаем по доверенности и отдаём полный пакет закрывающих документов.</p></details>
+          <details><summary>В каком виде прислать спецификацию?</summary><p>В любом: Excel, PDF, фото листа или проекта. Инженер разберёт и уточнит, если чего-то не хватает.</p></details>
+          <details><summary>Как быстро соберёте заказ?</summary><p>Позиции со склада соберём в тот же день. Под заказ сроки назовём сразу в счёте.</p></details>
+          <details><summary>Доставляете по области?</summary><p>Да, по Актобе и Актюбинской области. Стоимость зависит от объёма и адреса объекта.</p></details>
+          <details><summary>Можно вернуть или обменять товар?</summary><p>Да, если товар не был в монтаже и сохранил упаковку. Обмен оформим в магазине.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final" id="contacts" aria-labelledby="final-title">
+      <div class="wrap final__in">
+        <h2 id="final-title">Пришлите спецификацию.<br />Посчитаем сегодня.</h2>
+        <div class="final__btns">
+          <a class="btn btn--yellow" href="#request">Отправить заявку</a>
+          <a class="btn btn--ghost" href="tel:+77132411989">Позвонить</a>
+        </div>
+        <dl class="final__facts">
+          <div><dt>Телефон</dt><dd><a href="tel:+77132411989">+7 (7132) 41-19-89</a></dd></div>
+          <div><dt>Магазин и склад</dt><dd>Актобе, ул. Братьев Жубановых, 310 А</dd></div>
+          <div><dt>Направлений в каталоге</dt><dd>12</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <img src="/assets/logo-light.svg" alt="AQSHAM Electric" width="140" height="31" />
+      <span>Электротехника в Актобе</span>
+      <span>Демо-версия дизайна</span>
+    </div>
+  </footer>
+
+  <script src="/js/v4.js"></script>
+</body>
+</html>
