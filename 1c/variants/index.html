@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AQSHAM — варианты настройки обмена 1С и сайта</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --graphite: #1e1c18;
+      --ink: #f6f2e8;
+      --muted: #b9b1a2;
+      --yellow: #ffe400;
+      --line: rgba(255, 255, 255, 0.1);
+      --green: #3ddc84;
+      --red: #ff5c5c;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--graphite);
+      line-height: 1.5;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background:
+        radial-gradient(800px 420px at 10% -10%, rgba(255, 228, 0, 0.14), transparent 60%),
+        radial-gradient(700px 400px at 95% 10%, rgba(255, 173, 51, 0.08), transparent 55%),
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 48px 48px,
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px) 0 0 / 48px 48px,
+        var(--graphite);
+    }
+    .wire {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+      background-size: 40% 100%;
+      background-repeat: no-repeat;
+      animation: current 2.8s linear infinite;
+      z-index: 5;
+    }
+    @keyframes current {
+      from { background-position: -40% 0; }
+      to { background-position: 140% 0; }
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 64px;
+    }
+    .brand {
+      font-family: Outfit, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+    .brand b { color: var(--yellow); }
+    .brand a { color: inherit; }
+    h1 {
+      font-family: Outfit, sans-serif;
+      font-size: clamp(2rem, 1.3rem + 3vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      margin: 0 0 14px;
+      max-width: 20ch;
+    }
+    h1 span { color: var(--yellow); white-space: nowrap; }
+    .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 62ch;
+      margin: 0 0 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 28px 26px 26px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border: 1px solid var(--line);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+      animation: rise .7s ease both;
+    }
+    .card:nth-child(2) { animation-delay: .12s; }
+    .card.plus-card {
+      border-color: rgba(255, 228, 0, .55);
+      background: linear-gradient(180deg, rgba(255,228,0,.12), rgba(255,255,255,.03));
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .num {
+      font-family: Outfit, sans-serif;
+      font-weight: 800;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(255, 228, 0, .7);
+      margin-bottom: 14px;
+    }
+    .card h2 {
+      font-family: Outfit, sans-serif;
+      font-size: 1.45rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+    }
+    .what {
+      color: var(--muted);
+      margin: 0 0 20px;
+      font-size: .97rem;
+    }
+    .price {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin: 0 0 22px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid var(--line);
+    }
+    .price b {
+      font-family: Outfit, sans-serif;
+      font-size: 2rem;
+      letter-spacing: -0.02em;
+      color: var(--yellow);
+    }
+    .price span { color: var(--muted); font-size: .9rem; }
+
+    .card h3 {
+      font-size: .95rem;
+      margin: 0 0 10px;
+    }
+    .inherit {
+      margin: 0 0 18px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255,228,0,.45);
+      font-size: .93rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: grid;
+      gap: 8px;
+      font-size: .93rem;
+    }
+    li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    li::before {
+      flex: 0 0 18px;
+      height: 18px;
+      margin-top: 2px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .7rem;
+      font-weight: 800;
+    }
+    li.plus::before { content: "+"; background: rgba(61,220,132,.18); color: var(--green); }
+    li.minus::before { content: "−"; background: rgba(255,92,92,.16); color: var(--red); }
+    li.dot::before { content: ""; flex-basis: 8px; height: 8px; margin: 7px 5px 0; background: var(--yellow); }
+
+    .report {
+      margin: 4px 0 0;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      font-size: .82rem;
+    }
+    .report table { width: 100%; border-collapse: collapse; }
+    .report th, .report td { padding: 8px 10px; text-align: left; }
+    .report th { background: rgba(255,228,0,.14); font-weight: 600; }
+    .report td { border-top: 1px solid var(--line); color: var(--muted); }
+    .report td:nth-child(n+2) { white-space: nowrap; }
+    .report s { opacity: .7; }
+    .report em { font-style: normal; color: var(--yellow); font-weight: 600; }
+
+    .section {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .panel {
+      padding: 26px 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--line);
+      animation: rise .7s .35s ease both;
+    }
+    .panel.wide { grid-column: 1 / -1; }
+    .panel h3 {
+      font-family: Outfit, sans-serif;
+      font-size: 1.25rem;
+      margin: 0 0 14px;
+      letter-spacing: -0.02em;
+    }
+    .panel ul { margin: 0; }
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .opt {
+      padding: 18px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.2);
+      border: 1px solid var(--line);
+    }
+    .opt h4 { margin: 0 0 6px; font-size: 1rem; color: var(--yellow); }
+    .opt p { margin: 0 0 12px; font-size: .9rem; color: var(--muted); }
+    .opt ul { font-size: .88rem; }
+    .demo {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #fff;
+      color: var(--graphite);
+      font-weight: 700;
+    }
+    .demo s { color: #8a857a; font-weight: 500; }
+    .demo .sale { color: #d0021b; }
+    .note {
+      margin: 14px 0 0;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    .foot {
+      margin-top: 36px;
+      color: var(--muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 960px) {
+      .grid, .section, .two { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .wrap { padding-top: 40px; }
+      .report { overflow-x: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wire" aria-hidden="true"></div>
+
+  <main class="wrap">
+    <p class="brand"><b>AQSHAM</b> Electric · <a href="/1c/">1С → сайт</a> · варианты работ</p>
+    <h1>Настройка обмена <span>1С → сайт</span>: два варианта</h1>
+    <p class="lead">1С:Управление торговлей для Казахстана 2.2 передаёт товары и цены на сайт WordPress (WooCommerce). Второй вариант включает весь первый и добавляет акционные товары.</p>
+
+    <div class="grid">
+      <article class="card">
+        <div class="num">01</div>
+        <h2>Базовый обмен</h2>
+        <p class="what">Товары и цены из 1С автоматически попадают на сайт.</p>
+        <div class="price"><b>120 000 ₸</b><span>срок 1 месяц · оплата 100% после акта</span></div>
+
+        <h3>Что настраиваю в 1С</h3>
+        <ul>
+          <li class="dot">Обмен с сайтом в формате CommerceML: адрес сайта, логин и пароль</li>
+          <li class="dot">Товары: наименование и код. Код в 1С равен артикулу на сайте</li>
+          <li class="dot">Группы номенклатуры передаются как категории сайта</li>
+          <li class="dot">Цены одного вида цен, который выберет заказчик</li>
+          <li class="dot">Вес и свойства номенклатуры, если они заполнены</li>
+          <li class="dot">Картинки включаются переключателем, по умолчанию выключены</li>
+          <li class="dot">Выгрузка по расписанию и ручная полная выгрузка</li>
+          <li class="dot">Проверка обмена вместе с сайтом и инструкция для сотрудников</li>
+          <li class="dot">Гарантия 30 дней на ошибки выгрузки со стороны 1С</li>
+        </ul>
+      </article>
+
+      <article class="card plus-card">
+        <div class="num">02</div>
+        <h2>Базовый обмен + акционные товары</h2>
+        <p class="what">Акции назначаются в 1С и сами появляются на сайте.</p>
+        <div class="price"><b>160 000 ₸</b><span>срок 1 месяц · оплата 100% после акта</span></div>
+
+        <p class="inherit">Всё, что входит в вариант 01, плюс:</p>
+
+        <h3>Акционные товары в 1С</h3>
+        <ul>
+          <li class="dot">В карточке номенклатуры появляется галочка «Акционный»</li>
+          <li class="dot">После установки галочки выбирается вид цены, который уйдёт на сайт по этому товару</li>
+          <li class="dot">Акционная цена выгружается на сайт вместе с обычным обменом</li>
+          <li class="dot">Галочку сняли: при следующей выгрузке на сайте снова обычная цена</li>
+        </ul>
+
+        <h3>Отчёт «Акционные товары»</h3>
+        <ul>
+          <li class="dot">Какие товары сейчас участвуют в акции</li>
+          <li class="dot">По какой цене: акционная и обычная</li>
+          <li class="dot">Какой остаток на складе</li>
+          <li class="dot">Отбор по группе и складу, печать и выгрузка в Excel</li>
+        </ul>
+        <div class="report" aria-label="Пример отчёта">
+          <table>
+            <thead><tr><th>Товар</th><th>Код</th><th>Обычная</th><th>Акция</th><th>Остаток</th></tr></thead>
+            <tbody>
+              <tr><td>Автоматический выключатель</td><td>AQ-10325</td><td><s>12 500 ₸</s></td><td><em>10 200 ₸</em></td><td>48 шт</td></tr>
+              <tr><td>Кабель ВВГнг 3×2,5</td><td>AQ-20418</td><td><s>690 ₸</s></td><td><em>590 ₸</em></td><td>1 200 м</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+
+    <div class="section">
+      <section class="panel">
+        <h3>Не входит в оба варианта</h3>
+        <ul>
+          <li class="minus">Остатки на сайт не выгружаются</li>
+          <li class="minus">Заказы с сайта в 1С не загружаются</li>
+          <li class="minus">Доработка сайта, темы и плагинов WordPress</li>
+          <li class="minus">Заполнение в 1С веса, свойств, картинок и групп</li>
+          <li class="minus">Описания товаров на сайт не выгружаются</li>
+          <li class="minus">Обновление конфигурации 1С и ошибки после чужих доработок</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h3>Что делает сторона сайта</h3>
+        <ul>
+          <li class="dot">Принимает обмен 1С по адресу на сайте с логином и паролем</li>
+          <li class="dot">Находит товар по коду из 1С, равному артикулу на сайте</li>
+          <li class="dot">Сопоставляет группы 1С с категориями сайта</li>
+          <li class="dot">Обновляет цену, вес, атрибуты и картинки, если они включены</li>
+          <li class="dot">Для варианта 02 показывает акционную цену одним из способов ниже</li>
+        </ul>
+      </section>
+
+      <section class="panel wide">
+        <h3>Вариант 02: как показать акционную цену на сайте</h3>
+        <p class="note" style="margin-top:0">Выберите один способ. От выбора зависит только работа на стороне сайта, цена варианта 02 не меняется.</p>
+        <div class="two">
+          <div class="opt">
+            <h4>А. Цена со скидкой</h4>
+            <p>Обычная цена зачёркнута, акционная рядом.</p>
+            <div class="demo"><s>12 500 ₸</s><span class="sale">10 200 ₸</span></div>
+            <ul>
+              <li class="dot">1С передаёт обе цены: обычную и акционную</li>
+              <li class="dot">Сайт пишет обычную в «Базовую цену», акционную в «Цену распродажи»</li>
+              <li class="dot">Когда акцию сняли, сайт очищает «Цену распродажи»</li>
+              <li class="plus">Покупатель видит скидку, на товаре значок «Акция»</li>
+              <li class="plus">Такие товары можно автоматически показывать в блоке акций на главной</li>
+              <li class="minus">Сайту нужно настроить приём второй цены</li>
+            </ul>
+          </div>
+          <div class="opt">
+            <h4>Б. Замена цены</h4>
+            <p>Акционная цена просто стоит вместо обычной.</p>
+            <div class="demo"><span>10 200 ₸</span></div>
+            <ul>
+              <li class="dot">1С передаёт одну цену: акционную, пока действует акция</li>
+              <li class="dot">После снятия галочки 1С снова передаёт обычную цену</li>
+              <li class="plus">На стороне сайта ничего дополнительно делать не нужно</li>
+              <li class="minus">Покупатель не видит, что это скидка</li>
+              <li class="minus">Сайт не отличает акционные товары от обычных</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="foot">Напишите вариант: 01 или 02. Для варианта 02 укажите способ показа цены: А или Б.</p>
+  </main>
+</body>
+</html>
